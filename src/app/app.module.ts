@@ -8,14 +8,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
 
 import { CuatrimestreService } from './services/cuatrimestre.service';
+import { EncuestaService } from './services/encuesta.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent
+    HomepageComponent,
+    EncuestaComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,10 @@ import { CuatrimestreService } from './services/cuatrimestre.service';
     RouterModule.forRoot(routes),
     SharedModule
   ],
-  providers: [CuatrimestreService],
+  providers: [
+    CuatrimestreService,
+    EncuestaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

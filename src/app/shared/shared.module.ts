@@ -1,6 +1,15 @@
 import { NgModule } from '@angular/core';
 
-import { MdCardModule, MdToolbarModule, MdSidenavModule, MdButtonModule, MdIconModule, MdInputModule } from '@angular/material';
+import {
+  MdCardModule,
+  MdToolbarModule,
+  MdSidenavModule,
+  MdButtonModule,
+  MdIconModule,
+  MdInputModule,
+  MdExpansionModule,
+  MdRadioModule
+} from '@angular/material';
 
 @NgModule({
   imports: [],
@@ -11,7 +20,9 @@ import { MdCardModule, MdToolbarModule, MdSidenavModule, MdButtonModule, MdIconM
     MdSidenavModule,
     MdButtonModule,
     MdIconModule,
-    MdInputModule
+    MdInputModule,
+    MdExpansionModule,
+    MdRadioModule
   ]
 })
 

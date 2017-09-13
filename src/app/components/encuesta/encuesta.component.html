@@ -1,0 +1,20 @@
+<div class="container">
+  <md-accordion>
+    <md-expansion-panel *ngFor="let oferta of (encuesta|async)?.cuatrimestre.ofertas">
+      <md-expansion-panel-header>
+        <md-panel-title>
+          {{oferta.materia.nombre}}
+        </md-panel-title>
+        <md-panel-description>
+          This is a summary of the content
+        </md-panel-description>
+      </md-expansion-panel-header>
+
+      <md-radio-group style="display: inline-flex;flex-direction: column;">
+        <md-radio-button *ngFor="let comision of oferta.comisiones">
+          {{comision.descripcion}}
+        </md-radio-button>
+      </md-radio-group>
+    </md-expansion-panel>
+  </md-accordion>
+</div>
