@@ -1,0 +1,29 @@
+<div class="header mat-primary">
+  <h1>Encuesta de intención de inscripción</h1>
+</div>
+
+<div class="container">
+  <md-card *ngFor="let c of cuatrimestres" class="mt">
+    <md-card-title>{{c.carrera.nombre}}</md-card-title>
+    <md-card-content>
+      <p>{{c.descripcion}}</p>
+
+      <form class="example-form">
+        <md-form-field class="example-full-width">
+          <input mdInput placeholder="Email">
+          <!-- <md-error *ngIf="emailFormControl.hasError('pattern')">
+            Please enter a valid email address
+          </md-error>
+          <md-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </md-error> -->
+        </md-form-field>
+      </form>
+
+      <button md-raised-button color="accent">
+        <md-icon>send</md-icon>
+        LINK DE ENCUESTA
+      </button>
+    </md-card-content>
+  </md-card>
+</div>
