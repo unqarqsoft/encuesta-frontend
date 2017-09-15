@@ -5,3 +5,4 @@ export * from './encuesta';
 export * from './oferta';
 export * from './comision';
 export * from './materia';
+export * from './respuesta';

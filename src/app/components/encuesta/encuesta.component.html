@@ -1,20 +1,23 @@
 <div class="container">
+  <!-- <app-encuesta-materia *ngFor="let oferta of (encuesta|async)?.cuatrimestre.ofertas" [oferta] = oferta>
+  </app-encuesta-materia> -->
   <md-accordion>
-    <md-expansion-panel *ngFor="let oferta of (encuesta|async)?.cuatrimestre.ofertas">
+    <md-expansion-panel #panel *ngFor="let oferta of (encuesta|async)?.cuatrimestre.ofertas">
       <md-expansion-panel-header>
         <md-panel-title>
           {{oferta.materia.nombre}}
         </md-panel-title>
         <md-panel-description>
-          This is a summary of the content
+          {{selecciones[oferta.materia.id]}}
         </md-panel-description>
       </md-expansion-panel-header>
 
-      <md-radio-group style="display: inline-flex;flex-direction: column;">
-        <md-radio-button *ngFor="let comision of oferta.comisiones">
+      <md-radio-group style="display: inline-flex;flex-direction: column;" (change)="selectComision($event, oferta.materia); panel.toggle()">
+        <md-radio-button *ngFor="let comision of oferta.comisiones" [value]="comision">
           {{comision.descripcion}}
         </md-radio-button>
       </md-radio-group>
     </md-expansion-panel>
   </md-accordion>
+  <button md-fab color="primary" (click)="saveEncuesta()">Save</button>
 </div>

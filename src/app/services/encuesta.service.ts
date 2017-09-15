@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 
 import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/toPromise';
@@ -15,6 +15,16 @@ export class EncuestaService {
     return this.http.get(this.url + "/token/" + token)
       .toPromise()
       .then(response => response.json() as Encuesta)
+      .catch(this.handleError);
+  }
+
+  putEncuestaRespuestas(encuesta) {
+    return this.http.put(this.url + "/" + encuesta.id + "/respuestas", {respuestas: encuesta.respuestas})
+      .toPromise()
+      .then(response => {
+        console.log(response);
+        response.json() as Encuesta
+      })
       .catch(this.handleError);
   }
 
