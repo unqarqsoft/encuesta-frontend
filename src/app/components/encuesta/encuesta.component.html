@@ -1,23 +1,52 @@
 <div class="container">
-  <!-- <app-encuesta-materia *ngFor="let oferta of (encuesta|async)?.cuatrimestre.ofertas" [oferta] = oferta>
-  </app-encuesta-materia> -->
-  <md-accordion>
-    <md-expansion-panel #panel *ngFor="let oferta of (encuesta|async)?.cuatrimestre.ofertas">
-      <md-expansion-panel-header>
-        <md-panel-title>
-          {{oferta.materia.nombre}}
-        </md-panel-title>
-        <md-panel-description>
-          {{selecciones[oferta.materia.id]}}
-        </md-panel-description>
-      </md-expansion-panel-header>
+  <div fxLayout="row" fxLayoutGap="10px">
 
-      <md-radio-group style="display: inline-flex;flex-direction: column;" (change)="selectComision($event, oferta.materia); panel.toggle()">
-        <md-radio-button *ngFor="let comision of oferta.comisiones" [value]="comision">
-          {{comision.descripcion}}
-        </md-radio-button>
-      </md-radio-group>
-    </md-expansion-panel>
-  </md-accordion>
-  <button md-fab color="primary" (click)="saveEncuesta()">Save</button>
+    <div fxFlex="75">
+      <md-card class="nucleo-card">
+        <ng-template ngFor let-nucleo let-first="first" [ngForOf]="nucleos()">
+          <md-card-title [class.mt-lg]="!first">Materias del {{nucleo}}</md-card-title>
+          <md-card-content>
+            <md-accordion>
+              <md-expansion-panel #panel *ngFor="let oferta of oferta[nucleo]">
+                <md-expansion-panel-header>
+                  <md-panel-title>
+                    {{oferta.materia.nombre}}
+                  </md-panel-title>
+                  <md-panel-description fxFlex="1 1 50%">
+                    {{selecciones[oferta.materia.id]?.descripcion()}}
+                  </md-panel-description>
+                </md-expansion-panel-header>
+
+                <md-radio-group fxLayout="column" fxLayoutGap="10px" (change)="selectComision($event, oferta.materia); panel.toggle()">
+                  <md-radio-button [value]="getValue(oferta.materia, 'NO_CURSA')">No voy a cursar</md-radio-button>
+                  <md-radio-button [value]="getValue(oferta.materia, 'NO_HORARIO')">Tengo problemas de horario</md-radio-button>
+                  <md-radio-button *ngFor="let comision of oferta.comisiones" [value]="getValue(oferta.materia, 'COMISION', comision)">
+                    {{comision.descripcion}}
+                  </md-radio-button>
+                </md-radio-group>
+              </md-expansion-panel>
+            </md-accordion>
+          </md-card-content>
+        </ng-template>
+      </md-card>
+    </div>
+
+    <div fxFlex="25">
+      <md-card>
+        <md-card-title>Resumen</md-card-title>
+        <md-card-content>
+          <md-list>
+            <md-list-item *ngFor="let respuesta of comisionesSeleccionadas()">
+              <h4 md-line>{{respuesta.materia.nombre}}</h4>
+              <p md-line>{{respuesta.comision.descripcion}}</p>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+        <md-card-actions fxLayoutAlign="center">
+          <button fxFlexFill md-raised-button color="accent" (click)="saveEncuesta()">Finalizar</button>
+        </md-card-actions>
+      </md-card>
+    </div>
+
+  </div>
 </div>

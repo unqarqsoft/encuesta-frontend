@@ -12,7 +12,6 @@ import { SharedModule } from './shared/shared.module';
 
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
-import { EncuestaMateriaComponent } from './components/encuesta/encuesta-materia.component';
 
 import { CuatrimestreService } from './services/cuatrimestre.service';
 import { EncuestaService } from './services/encuesta.service';
@@ -21,8 +20,7 @@ import { EncuestaService } from './services/encuesta.service';
   declarations: [
     AppComponent,
     HomepageComponent,
-    EncuestaComponent,
-    EncuestaMateriaComponent
+    EncuestaComponent
   ],
   imports: [
     BrowserModule,

@@ -50,5 +50,13 @@ body {
 }
 
 .mt {
-  margin-top: 10px;
+  margin-top: 10px !important;
+}
+
+.mt-lg {
+  margin-top: 25px !important;
+}
+
+.nucleo-card {
+  background: rgba(0,0,0,.03);
 }

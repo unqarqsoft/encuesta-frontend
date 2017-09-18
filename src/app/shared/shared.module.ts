@@ -8,7 +8,8 @@ import {
   MdIconModule,
   MdInputModule,
   MdExpansionModule,
-  MdRadioModule
+  MdRadioModule,
+  MdListModule
 } from '@angular/material';
 
 @NgModule({
@@ -22,7 +23,8 @@ import {
     MdIconModule,
     MdInputModule,
     MdExpansionModule,
-    MdRadioModule
+    MdRadioModule,
+    MdListModule
   ]
 })
 
