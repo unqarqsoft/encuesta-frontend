@@ -3,3 +3,15 @@
   top: 8px;
   width: 21%;
 }
+
+.panel-comision {
+  background-color: #dff0d8
+}
+
+.panel-nohorario {
+  background-color: #f2dede;
+}
+
+.panel-nocursa {
+  background-color: #fcf8e3;
+}

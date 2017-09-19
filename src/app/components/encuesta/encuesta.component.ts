@@ -73,6 +73,14 @@ export class EncuestaComponent implements OnInit {
     return Object.keys(this.oferta);
   }
 
+  getPanelClass(materiaId: number) {
+    return {
+      'panel-comision': (materiaId in this.selecciones) && this.selecciones[materiaId].respuesta == 'COMISION',
+      'panel-nocursa': (materiaId in this.selecciones) && this.selecciones[materiaId].respuesta == 'NO_CURSA',
+      'panel-nohorario': (materiaId in this.selecciones) && this.selecciones[materiaId].respuesta == 'NO_HORARIO'
+    };
+  }
+
   selectOption(event) {
     let respuesta = event.value;
     this.selecciones[respuesta.materia.id] = respuesta;

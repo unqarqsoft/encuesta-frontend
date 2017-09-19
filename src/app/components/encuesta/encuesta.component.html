@@ -7,7 +7,7 @@
           <md-card-title [class.mt-lg]="!first">Materias del {{nucleo}}</md-card-title>
           <md-card-content>
             <md-accordion>
-              <md-expansion-panel #panel *ngFor="let oferta of oferta[nucleo]">
+              <md-expansion-panel #panel *ngFor="let oferta of oferta[nucleo]" class="materia-panel" [ngClass]="getPanelClass(oferta.materia.id)">
                 <md-expansion-panel-header>
                   <md-panel-title>
                     {{oferta.materia.nombre}}
