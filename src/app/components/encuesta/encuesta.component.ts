@@ -25,7 +25,7 @@ export class EncuestaComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .switchMap((params: ParamMap) => this.encuestaService.getEncuesta(params.get('token')))
-      .subscribe(encuesta => this.setEncuesta(encuesta));
+      .subscribe(encuesta => this.loadEncuesta(encuesta));
   }
 
   getValue(materia, respuesta, comision) {
@@ -47,15 +47,8 @@ export class EncuestaComponent implements OnInit {
     }, []);
   }
 
-  setEncuesta(encuesta: Encuesta) {
-    this.selecciones = encuesta.respuestas.reduce((object, respuesta) => {
-      let rta = new Respuesta();
-      rta.materia = respuesta.materia;
-      rta.comision = respuesta.comision;
-      rta.respuesta = respuesta.respuesta;
-      object[respuesta.materia.id] = rta;
-      return object;
-    }, {});
+  loadEncuesta(encuesta: Encuesta) {
+    this.loadRespuestas(encuesta);
     this.oferta = encuesta.cuatrimestre.ofertas.reduce((list, oferta) => {
       let base = (typeof list[oferta.materia.nucleo] === 'undefined' ? [] : list[oferta.materia.nucleo]);
       base.push(oferta);
@@ -65,27 +58,28 @@ export class EncuestaComponent implements OnInit {
     this._encuesta = encuesta;
   }
 
+  loadRespuestas(encuesta: Encuesta) {
+    this.selecciones = encuesta.respuestas.reduce((object, respuesta) => {
+      let rta = new Respuesta();
+      rta.materia = respuesta.materia;
+      rta.comision = respuesta.comision;
+      rta.respuesta = respuesta.respuesta;
+      object[respuesta.materia.id] = rta;
+      return object;
+    }, {});
+  }
+
   nucleos() {
     return Object.keys(this.oferta);
   }
 
-  selectComision(event, materia) {
+  selectOption(event) {
     let respuesta = event.value;
     this.selecciones[respuesta.materia.id] = respuesta;
-    console.log(this.selecciones);
   }
 
   saveEncuesta() {
-    let respuestas = Object.keys(this.selecciones).reduce((array, key) => {
-      let rta = new Respuesta();
-      let respuesta = this.selecciones[key];
-      rta.materia = respuesta.materia;
-      rta.comision = respuesta.comision;
-      rta.respuesta = respuesta.respuesta;
-      array.push(rta);
-      return array;
-    }, []);
-    this._encuesta.respuestas = respuestas;
+    this._encuesta.respuestas = Object.values(this.selecciones) as Respuesta[];
     this.encuestaService.putEncuestaRespuestas(this._encuesta);
   }
 }

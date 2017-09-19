@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { ScrollSpyModule } from 'ngx-scrollspy';
+import { ScrollSpyAffixDirective } from 'ngx-scrollspy/dist/plugin/affix'
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
@@ -20,7 +22,8 @@ import { EncuestaService } from './services/encuesta.service';
   declarations: [
     AppComponent,
     HomepageComponent,
-    EncuestaComponent
+    EncuestaComponent,
+    ScrollSpyAffixDirective
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { EncuestaService } from './services/encuesta.service';
     HttpModule,
     FormsModule,
     FlexLayoutModule,
+    ScrollSpyModule.forRoot(),
     RouterModule.forRoot(routes),
     SharedModule
   ],

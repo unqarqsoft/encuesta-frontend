@@ -17,7 +17,7 @@
                   </md-panel-description>
                 </md-expansion-panel-header>
 
-                <md-radio-group fxLayout="column" fxLayoutGap="10px" (change)="selectComision($event, oferta.materia); panel.toggle()">
+                <md-radio-group fxLayout="column" fxLayoutGap="10px" (change)="selectOption($event); panel.toggle()">
                   <md-radio-button [value]="getValue(oferta.materia, 'NO_CURSA')">No voy a cursar</md-radio-button>
                   <md-radio-button [value]="getValue(oferta.materia, 'NO_HORARIO')">Tengo problemas de horario</md-radio-button>
                   <md-radio-button *ngFor="let comision of oferta.comisiones" [value]="getValue(oferta.materia, 'COMISION', comision)">
@@ -31,8 +31,8 @@
       </md-card>
     </div>
 
-    <div fxFlex="25">
-      <md-card>
+    <div fxFlex="25" scrollSpy>
+      <md-card [scrollSpyAffix]="{topMargin: 60}">
         <md-card-title>Resumen</md-card-title>
         <md-card-content>
           <md-list>
