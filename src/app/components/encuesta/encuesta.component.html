@@ -43,7 +43,7 @@
           </md-list>
         </md-card-content>
         <md-card-actions fxLayoutAlign="center">
-          <button fxFlexFill md-raised-button color="accent" (click)="saveEncuesta()">Finalizar</button>
+          <button fxFlexFill md-raised-button color="accent" #btnSave (click)="saveEncuesta(btnSave)">Guardar</button>
         </md-card-actions>
       </md-card>
     </div>

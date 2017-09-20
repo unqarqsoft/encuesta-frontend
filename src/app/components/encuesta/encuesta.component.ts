@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { MdSnackBar } from '@angular/material';
 
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
@@ -19,7 +20,8 @@ export class EncuestaComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private encuestaService: EncuestaService
+    private encuestaService: EncuestaService,
+    public notification: MdSnackBar
   ) {}
 
   ngOnInit() {
@@ -74,11 +76,15 @@ export class EncuestaComponent implements OnInit {
   }
 
   getPanelClass(materiaId: number) {
-    return {
-      'panel-comision': (materiaId in this.selecciones) && this.selecciones[materiaId].respuesta == 'COMISION',
-      'panel-nocursa': (materiaId in this.selecciones) && this.selecciones[materiaId].respuesta == 'NO_CURSA',
-      'panel-nohorario': (materiaId in this.selecciones) && this.selecciones[materiaId].respuesta == 'NO_HORARIO'
-    };
+    if (materiaId in this.selecciones) {
+      return {
+        'panel-comision': this.selecciones[materiaId].respuesta == 'COMISION',
+        'panel-nocursa': this.selecciones[materiaId].respuesta == 'NO_CURSA',
+        'panel-nohorario': this.selecciones[materiaId].respuesta == 'NO_HORARIO'
+      };
+    }
+    
+    return {};
   }
 
   selectOption(event) {
@@ -86,8 +92,14 @@ export class EncuestaComponent implements OnInit {
     this.selecciones[respuesta.materia.id] = respuesta;
   }
 
-  saveEncuesta() {
+  saveEncuesta(button) {
+    button.disabled = true;
     this._encuesta.respuestas = Object.values(this.selecciones) as Respuesta[];
-    this.encuestaService.putEncuestaRespuestas(this._encuesta);
+    this.encuestaService.putEncuestaRespuestas(this._encuesta).then(
+      response => {
+        this.notification.open("Encuesta guardada", "OK", {duration: 4000});
+        button.disabled = false;
+      }
+    );
   }
 }

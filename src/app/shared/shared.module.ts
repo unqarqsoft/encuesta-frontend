@@ -9,7 +9,8 @@ import {
   MdInputModule,
   MdExpansionModule,
   MdRadioModule,
-  MdListModule
+  MdListModule,
+  MdSnackBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -24,7 +25,8 @@ import {
     MdInputModule,
     MdExpansionModule,
     MdRadioModule,
-    MdListModule
+    MdListModule,
+    MdSnackBarModule
   ]
 })
 
