@@ -1,0 +1,8 @@
+<md-toolbar color="primary" fxLayoutWrap>
+  <button md-button routerLink="/">ENCUESTAS</button>
+  <div fxFlex="1 1 auto"></div>
+  <ng-container *ngIf="alumno">
+    <img [src]="gravatar()">
+    <button md-button>{{alumno.nombre}} {{alumno.apellido}}</button>
+  </ng-container>
+</md-toolbar>

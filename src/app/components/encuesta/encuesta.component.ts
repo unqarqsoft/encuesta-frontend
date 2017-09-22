@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { Encuesta, Comision, Respuesta } from '../../models';
 import { EncuestaService } from '../../services/encuesta.service';
+import { AlumnoService } from '../../services/alumno.service';
 
 @Component({
   selector: 'app-encuesta',
@@ -21,6 +22,7 @@ export class EncuestaComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private encuestaService: EncuestaService,
+    private alumnoService: AlumnoService,
     public notification: MdSnackBar
   ) {}
 
@@ -50,6 +52,7 @@ export class EncuestaComponent implements OnInit {
   }
 
   loadEncuesta(encuesta: Encuesta) {
+    this.alumnoService.setAlumno(encuesta.alumno);
     this.loadRespuestas(encuesta);
     this.oferta = encuesta.cuatrimestre.ofertas.reduce((list, oferta) => {
       let base = (typeof list[oferta.materia.nucleo] === 'undefined' ? [] : list[oferta.materia.nucleo]);
@@ -83,7 +86,7 @@ export class EncuestaComponent implements OnInit {
         'panel-nohorario': this.selecciones[materiaId].respuesta == 'NO_HORARIO'
       };
     }
-    
+
     return {};
   }
 

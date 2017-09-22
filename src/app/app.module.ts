@@ -17,6 +17,7 @@ import { EncuestaComponent } from './components/encuesta/encuesta.component';
 
 import { CuatrimestreService } from './services/cuatrimestre.service';
 import { EncuestaService } from './services/encuesta.service';
+import { AlumnoService } from './services/alumno.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { EncuestaService } from './services/encuesta.service';
   ],
   providers: [
     CuatrimestreService,
-    EncuestaService
+    EncuestaService,
+    AlumnoService
   ],
   bootstrap: [AppComponent]
 })
