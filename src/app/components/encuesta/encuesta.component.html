@@ -1,4 +1,9 @@
 <app-loading [show]="!_encuesta">
+  <div class="header mat-primary">
+    <h1>Encuesta {{_encuesta?.cuatrimestre.carrera.nombre}}</h1>
+    <h2>{{_encuesta?.cuatrimestre.descripcion}}</h2>
+  </div>
+
   <div class="container" >
     <div fxLayout="row" fxLayoutGap="10px">
 
@@ -33,7 +38,7 @@
       </div>
 
       <div fxFlex="25" scrollSpy>
-        <md-card [scrollSpyAffix]="{topMargin: 60}">
+        <md-card [scrollSpyAffix]="{topMargin: 200}">
           <md-card-title>Resumen</md-card-title>
           <md-card-content>
             <md-list>
