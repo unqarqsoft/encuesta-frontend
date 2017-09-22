@@ -1,4 +1,8 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from "@angular/flex-layout";
+
+import { LoadingComponent } from './loading/loading.component';
 
 import {
   MdCardModule,
@@ -10,12 +14,13 @@ import {
   MdExpansionModule,
   MdRadioModule,
   MdListModule,
-  MdSnackBarModule
+  MdSnackBarModule,
+  MdProgressSpinnerModule
 } from '@angular/material';
 
 @NgModule({
-  imports: [],
-  declarations: [],
+  imports: [MdProgressSpinnerModule, CommonModule, FlexLayoutModule],
+  declarations: [LoadingComponent],
   exports: [
     MdCardModule,
     MdToolbarModule,
@@ -26,7 +31,8 @@ import {
     MdExpansionModule,
     MdRadioModule,
     MdListModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    LoadingComponent
   ]
 })
 

@@ -1,0 +1,7 @@
+<div class="loading-container" fxLayout="column" fxLayoutAlign="start center" fxFill *ngIf="show">
+  <div fxFlexOffset="15%" fxLayoutAlign="center center" fxLayout="column">
+    <md-spinner [color]="primary" ></md-spinner>
+    <p>{{mensaje}}</p>
+  </div>
+</div>
+<ng-content *ngIf="!show"></ng-content>

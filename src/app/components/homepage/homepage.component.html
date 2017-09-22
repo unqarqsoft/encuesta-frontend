@@ -2,23 +2,25 @@
   <h1>Encuesta de intención de inscripción</h1>
 </div>
 
-<div class="container">
-  <md-card *ngFor="let c of cuatrimestres" class="mt">
-    <md-card-title>{{c.carrera.nombre}}</md-card-title>
-    <md-card-content>
-      <p>{{c.descripcion}}</p>
+<app-loading [show]="!cuatrimestres">
+  <div class="container">
+    <md-card *ngFor="let c of cuatrimestres" class="mt">
+      <md-card-title>{{c.carrera.nombre}}</md-card-title>
+      <md-card-content>
+        <p>{{c.descripcion}}</p>
 
-      <form #emailForm="ngForm" (ngSubmit)="onSubmit(emailForm, c.id)">
-        <md-form-field>
-          <input mdInput placeholder="Email" name="email" ngModel>
-        </md-form-field>
+        <form #emailForm="ngForm" (ngSubmit)="onSubmit(emailForm, c.id)">
+          <md-form-field>
+            <input mdInput placeholder="Email" name="email" ngModel>
+          </md-form-field>
 
-        <div>
-          <button type="submit" md-raised-button color="accent">
-            <md-icon>send</md-icon> LINK DE ENCUESTA
-          </button>
-        </div>
-      </form>
-    </md-card-content>
-  </md-card>
-</div>
+          <div>
+            <button type="submit" md-raised-button color="accent">
+              <md-icon>send</md-icon> LINK DE ENCUESTA
+            </button>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
+  </div>
+</app-loading>
