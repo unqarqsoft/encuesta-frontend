@@ -11,6 +11,7 @@ import { ScrollSpyAffixDirective } from 'ngx-scrollspy/dist/plugin/affix'
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { AdminModule } from './admin/admin.module';
 
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
@@ -34,7 +35,8 @@ import { AlumnoService } from './services/alumno.service';
     FlexLayoutModule,
     ScrollSpyModule.forRoot(),
     RouterModule.forRoot(routes),
-    SharedModule
+    SharedModule,
+    AdminModule
   ],
   providers: [
     CuatrimestreService,
