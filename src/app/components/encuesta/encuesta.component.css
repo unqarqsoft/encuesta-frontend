@@ -5,13 +5,13 @@
 }
 
 .panel-comision {
-  background-color: #dff0d8
+  color: #5cb85c;
 }
 
 .panel-nohorario {
-  background-color: #f2dede;
+  color: #da1610;
 }
 
 .panel-nocursa {
-  background-color: #fcf8e3;
+  color: #d58512;
 }
