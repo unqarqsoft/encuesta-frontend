@@ -17,6 +17,7 @@ import {
   MdRadioModule,
   MdListModule,
   MdSnackBarModule,
+  MdTableModule,
   MdProgressSpinnerModule
 } from '@angular/material';
 
@@ -44,7 +45,9 @@ import {
     MdListModule,
     MdSnackBarModule,
     LoadingComponent,
-    NavbarComponent
+    MdTableModule,
+    NavbarComponent,
+    FlexLayoutModule
   ]
 })
 

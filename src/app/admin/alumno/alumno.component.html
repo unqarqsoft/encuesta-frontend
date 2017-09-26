@@ -1,0 +1,28 @@
+<div class="header">
+  <h1>Alumnos</h1>
+</div>
+
+<md-table [dataSource]="dataSource">
+  <ng-container mdColumnDef="id">
+    <md-header-cell *mdHeaderCellDef>ID</md-header-cell>
+    <md-cell *mdCellDef="let alumno"> {{alumno.id}} </md-cell>
+  </ng-container>
+
+  <ng-container mdColumnDef="nombre">
+    <md-header-cell *mdHeaderCellDef>Nombre</md-header-cell>
+    <md-cell *mdCellDef="let alumno"> {{alumno.nombre}} </md-cell>
+  </ng-container>
+
+  <ng-container mdColumnDef="apellido">
+    <md-header-cell *mdHeaderCellDef>Apellido</md-header-cell>
+    <md-cell *mdCellDef="let alumno"> {{alumno.apellido}} </md-cell>
+  </ng-container>
+
+  <ng-container mdColumnDef="email">
+    <md-header-cell *mdHeaderCellDef>Email</md-header-cell>
+    <md-cell *mdCellDef="let alumno"> {{alumno.email}} </md-cell>
+  </ng-container>
+
+  <md-header-row *mdHeaderRowDef="columns"></md-header-row>
+  <md-row *mdRowDef="let row; columns: columns;"></md-row>
+</md-table>

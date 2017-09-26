@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from "@angular/flex-layout";
 import { ScrollSpyModule } from 'ngx-scrollspy';
 import { ScrollSpyAffixDirective } from 'ngx-scrollspy/dist/plugin/affix'
 
@@ -32,7 +31,6 @@ import { AlumnoService } from './services/alumno.service';
     BrowserAnimationsModule,
     HttpModule,
     FormsModule,
-    FlexLayoutModule,
     ScrollSpyModule.forRoot(),
     RouterModule.forRoot(routes),
     SharedModule,
