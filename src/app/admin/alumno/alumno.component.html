@@ -1,6 +1,6 @@
-<div class="header">
-  <h1>Alumnos</h1>
-</div>
+<app-header title="Alumnos">
+  <button md-raised-button color="accent" routerLink="./new">NUEVO</button>
+</app-header>
 
 <md-table [dataSource]="dataSource">
   <ng-container mdColumnDef="id">

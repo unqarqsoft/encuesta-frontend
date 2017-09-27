@@ -24,6 +24,13 @@ export class AlumnoService {
       .catch(this.handleError);
   }
 
+  postAlumno(alumno: Alumno) {
+    return this.http.post(this.url, alumno)
+      .toPromise()
+      .then(response => response.json() as Alumno[])
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);

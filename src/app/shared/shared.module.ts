@@ -5,6 +5,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoadingComponent } from './loading/loading.component';
+import { HeaderComponent } from './header/header.component';
 
 import {
   MdCardModule,
@@ -32,7 +33,8 @@ import {
   ],
   declarations: [
     LoadingComponent,
-    NavbarComponent
+    NavbarComponent,
+    HeaderComponent
   ],
   exports: [
     MdCardModule,
@@ -45,6 +47,7 @@ import {
     MdListModule,
     MdSnackBarModule,
     LoadingComponent,
+    HeaderComponent,
     MdTableModule,
     NavbarComponent,
     FlexLayoutModule
