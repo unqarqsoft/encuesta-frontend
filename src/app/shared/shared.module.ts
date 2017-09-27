@@ -19,7 +19,8 @@ import {
   MdListModule,
   MdSnackBarModule,
   MdTableModule,
-  MdProgressSpinnerModule
+  MdProgressSpinnerModule,
+  MatPaginatorModule
 } from '@angular/material';
 
 @NgModule({
@@ -50,7 +51,8 @@ import {
     HeaderComponent,
     MdTableModule,
     NavbarComponent,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatPaginatorModule
   ]
 })
 
