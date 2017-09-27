@@ -7,6 +7,7 @@ import { AdminComponent } from './admin.component';
 
 import { routes } from './admin.routes';
 import { AlumnoComponent } from './alumno/alumno.component';
+import { MateriaComponent } from './materia/materia.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { AlumnoComponent } from './alumno/alumno.component';
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AdminComponent, AlumnoComponent]
+  declarations: [AdminComponent, AlumnoComponent, MateriaComponent]
 })
 export class AdminModule { }
