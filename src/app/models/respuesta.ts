@@ -13,6 +13,9 @@ export class Respuesta {
     if ('NO_CURSA' == this.respuesta) {
       return 'No voy a cursar';
     }
+    if ('APROBADA' == this.respuesta) {
+      return 'Ya aprobé';
+    }
     return 'Tengo problema de horario';
   }
 }

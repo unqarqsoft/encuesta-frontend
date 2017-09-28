@@ -24,6 +24,7 @@
                   </md-expansion-panel-header>
 
                   <md-radio-group fxLayout="column" fxLayoutGap="10px" (change)="selectOption($event); panel.toggle()">
+                    <md-radio-button [value]="getValue(oferta.materia, 'APROBADA')">Ya aprobé</md-radio-button>
                     <md-radio-button [value]="getValue(oferta.materia, 'NO_CURSA')">No voy a cursar</md-radio-button>
                     <md-radio-button [value]="getValue(oferta.materia, 'NO_HORARIO')">Tengo problemas de horario</md-radio-button>
                     <md-radio-button *ngFor="let comision of oferta.comisiones" [value]="getValue(oferta.materia, 'COMISION', comision)">

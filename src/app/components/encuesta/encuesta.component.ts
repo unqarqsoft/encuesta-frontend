@@ -64,14 +64,19 @@ export class EncuestaComponent implements OnInit {
   }
 
   loadRespuestas(encuesta: Encuesta) {
-    this.selecciones = encuesta.respuestas.reduce((object, respuesta) => {
+    encuesta.cuatrimestre.ofertas.forEach((oferta) => {
+      let rta = new Respuesta();
+      rta.materia = oferta.materia;
+      rta.respuesta = 'NO_CURSA';
+      this.selecciones[oferta.materia.id] = rta;
+    });
+    encuesta.respuestas.forEach((respuesta) => {
       let rta = new Respuesta();
       rta.materia = respuesta.materia;
       rta.comision = respuesta.comision;
       rta.respuesta = respuesta.respuesta;
-      object[respuesta.materia.id] = rta;
-      return object;
-    }, {});
+      this.selecciones[respuesta.materia.id] = rta;
+    });
   }
 
   nucleos() {
