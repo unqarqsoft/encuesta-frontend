@@ -1,9 +1,9 @@
 <div fxLayout="row" fxFill>
   <div fxFlex="20" class="sidebar">
     <md-nav-list>
-      <a md-list-item href="">Cuatrimestres</a>
-      <a md-list-item routerLink="./alumnos">Alumnos</a>
-      <a md-list-item routerLink="./materias">Materias</a>
+      <a md-list-item routerLink="." routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Dashboard</a>
+      <a md-list-item routerLink="./alumnos" routerLinkActive="active">Alumnos</a>
+      <a md-list-item routerLink="./materias" routerLinkActive="active">Materias</a>
     </md-nav-list>
   </div>
 

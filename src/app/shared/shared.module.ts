@@ -20,7 +20,8 @@ import {
   MdSnackBarModule,
   MdTableModule,
   MdProgressSpinnerModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatProgressBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -47,6 +48,7 @@ import {
     MdRadioModule,
     MdListModule,
     MdSnackBarModule,
+    MatProgressBarModule,
     LoadingComponent,
     HeaderComponent,
     MdTableModule,

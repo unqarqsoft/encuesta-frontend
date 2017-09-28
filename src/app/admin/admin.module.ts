@@ -10,6 +10,7 @@ import { routes } from './admin.routes';
 import { AlumnoComponent } from './alumno/alumno.component';
 import { MateriaComponent } from './materia/materia.component';
 import { AlumnoNewComponent } from './alumno/alumno-new.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { AlumnoNewComponent } from './alumno/alumno-new.component';
     AdminComponent,
     AlumnoComponent,
     MateriaComponent,
-    AlumnoNewComponent
+    AlumnoNewComponent,
+    DashboardComponent
   ]
 })
 export class AdminModule { }
