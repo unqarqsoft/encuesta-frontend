@@ -11,6 +11,7 @@ import { AlumnoComponent } from './alumno/alumno.component';
 import { MateriaComponent } from './materia/materia.component';
 import { AlumnoNewComponent } from './alumno/alumno-new.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ResumenComponent } from './resumen/resumen.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AlumnoComponent,
     MateriaComponent,
     AlumnoNewComponent,
-    DashboardComponent
+    DashboardComponent,
+    ResumenComponent
   ]
 })
 export class AdminModule { }

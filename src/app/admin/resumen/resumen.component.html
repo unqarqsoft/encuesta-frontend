@@ -1,0 +1,41 @@
+<app-header title="Resumen de encuestas"></app-header>
+
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutFill style="margin-left: 25px;margin-right:10px">
+  <md-form-field floatPlaceholder="never">
+    <input mdInput #filter placeholder="Filtrar materias">
+  </md-form-field>
+  <div>
+    <button md-button><md-icon>sort</md-icon> Ordenar por inscriptos</button>
+    <button md-button><md-icon>sort_by_alpha</md-icon> Ordenar alfabéticamente</button>
+  </div>
+</div>
+
+<ng-container *ngFor="let materia of (materias | async)">
+  <md-expansion-panel>
+    <md-expansion-panel-header>
+    <md-panel-title>
+      {{materia.materia.nombre}}
+    </md-panel-title>
+    <md-panel-description fxFlex="1 1 50%">
+      Total inscriptos: {{materia.total}}
+    </md-panel-description>
+  </md-expansion-panel-header>
+  <md-list>
+    <md-list-item *ngFor="let comision of materia.comisiones">
+      <md-icon md-list-icon>chevron_right</md-icon>
+      <h4 md-line fxLayoutAlign="space-between center">
+        {{comision.descripcion}}
+        <strong>Inscriptos: {{comision.total}}</strong>
+        Mínimo: {{comision.cupo_minimo}} - Máximo: {{comision.cupo_maximo}}
+      </h4>
+      <md-progress-bar md-line [color]="getStatusColor(comision)" [value]="(comision.total / comision.cupo_maximo) * 100"></md-progress-bar>
+    </md-list-item>
+    </md-list>
+  </md-expansion-panel>
+</ng-container>
+<md-paginator #paginator
+              [length]="data?.materias.length"
+              [pageIndex]="0"
+              [pageSize]="12"
+              [pageSizeOptions]="[5, 12, 15, 25, 50]">
+</md-paginator>

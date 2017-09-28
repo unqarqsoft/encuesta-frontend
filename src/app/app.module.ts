@@ -19,6 +19,7 @@ import { CuatrimestreService } from './services/cuatrimestre.service';
 import { EncuestaService } from './services/encuesta.service';
 import { AlumnoService } from './services/alumno.service';
 import { MateriaService } from './services/materia.service';
+import { EstadisticaService } from './services/estadistica.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MateriaService } from './services/materia.service';
     CuatrimestreService,
     EncuestaService,
     AlumnoService,
-    MateriaService
+    MateriaService,
+    EstadisticaService
   ],
   bootstrap: [AppComponent]
 })

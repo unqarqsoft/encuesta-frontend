@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AlumnoComponent } from './alumno/alumno.component';
 import { MateriaComponent } from './materia/materia.component';
 import { AlumnoNewComponent } from './alumno/alumno-new.component';
+import { ResumenComponent } from './resumen/resumen.component';
 
 export const routes: Routes = [
   {
@@ -26,6 +27,10 @@ export const routes: Routes = [
       {
         path: 'materias',
         component: MateriaComponent,
+      },
+      {
+        path: 'resumen',
+        component: ResumenComponent,
       }
     ]
   }
