@@ -1,37 +1,39 @@
 <app-header title="Encuestas por alumno"></app-header>
 
-<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutFill style="margin-left: 25px;margin-right:10px">
-  <md-form-field floatPlaceholder="never">
-    <input mdInput #filter placeholder="Filtrar alumnos">
-  </md-form-field>
-</div>
+<app-loading [show]="!encuestas">
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutFill style="margin-left: 25px;margin-right:10px">
+    <md-form-field floatPlaceholder="never">
+      <input mdInput #filter placeholder="Filtrar alumnos">
+    </md-form-field>
+  </div>
 
-<ng-container *ngFor="let encuesta of (encuestas | async)">
-  <md-expansion-panel>
-    <md-expansion-panel-header>
-      <md-panel-title>
-        {{encuesta.alumno.nombre}} {{encuesta.alumno.apellido}}
-      </md-panel-title>
-      <md-panel-description fxFlex="1 1 50%">
-      </md-panel-description>
-    </md-expansion-panel-header>
+  <ng-container *ngFor="let encuesta of (encuestas | async)">
+    <md-expansion-panel>
+      <md-expansion-panel-header>
+        <md-panel-title>
+          {{encuesta.alumno.nombre}} {{encuesta.alumno.apellido}}
+        </md-panel-title>
+        <md-panel-description fxFlex="1 1 50%">
+        </md-panel-description>
+      </md-expansion-panel-header>
 
-    <md-list>
-      <md-list-item *ngFor="let respuesta of comisiones(encuesta.respuestas)">
-        <md-icon md-list-icon>chevron_right</md-icon>
-        <h4 md-line>
-          {{respuesta.materia.nombre}}
-        </h4>
-        <h4 md-line>
-          {{respuesta.comision.descripcion}}
-        </h4>
-      </md-list-item>
-    </md-list>
-  </md-expansion-panel>
-</ng-container>
-<md-paginator #paginator
-              [length]="dataSource?.data.length"
-              [pageIndex]="0"
-              [pageSize]="12"
-              [pageSizeOptions]="[5, 12, 15, 25, 50]">
-</md-paginator>
+      <md-list>
+        <md-list-item *ngFor="let respuesta of comisiones(encuesta.respuestas)">
+          <md-icon md-list-icon>chevron_right</md-icon>
+          <h4 md-line>
+            {{respuesta.materia.nombre}}
+          </h4>
+          <h4 md-line>
+            {{respuesta.comision.descripcion}}
+          </h4>
+        </md-list-item>
+      </md-list>
+    </md-expansion-panel>
+  </ng-container>
+  <md-paginator #paginator
+                [length]="dataSource?.data.length"
+                [pageIndex]="0"
+                [pageSize]="12"
+                [pageSizeOptions]="[5, 12, 15, 25, 50]">
+  </md-paginator>
+</app-loading>
