@@ -18,6 +18,12 @@ export class EncuestaService {
       .catch(this.handleError);
   }
 
+  getEncuestas() {
+    return this.http.get(this.url).toPromise()
+      .then(response => response.json() as Encuesta[])
+      .catch(this.handleError);
+  }
+
   putEncuestaRespuestas(encuesta) {
     return this.http.put(this.url + "/" + encuesta.id + "/respuestas", {respuestas: encuesta.respuestas})
       .toPromise()

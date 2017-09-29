@@ -6,6 +6,7 @@ import { AlumnoComponent } from './alumno/alumno.component';
 import { MateriaComponent } from './materia/materia.component';
 import { AlumnoNewComponent } from './alumno/alumno-new.component';
 import { ResumenComponent } from './resumen/resumen.component';
+import { EncuestasComponent } from './encuestas/encuestas.component';
 
 export const routes: Routes = [
   {
@@ -31,6 +32,10 @@ export const routes: Routes = [
       {
         path: 'resumen',
         component: ResumenComponent,
+      },
+      {
+        path: 'encuestas',
+        component: EncuestasComponent,
       }
     ]
   }
