@@ -6,6 +6,12 @@ export class Respuesta {
   comision: Comision;
   materia: Materia;
 
+  constructor(respuesta: string, materia: Materia, comision?: Comision) {
+    this.respuesta = respuesta;
+    this.materia = materia;
+    this.comision = comision;
+  }
+
   public descripcion(): string {
     if (this.comision instanceof Object) {
       return this.comision.descripcion;

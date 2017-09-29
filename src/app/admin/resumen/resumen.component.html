@@ -25,7 +25,7 @@
       <md-icon md-list-icon>chevron_right</md-icon>
       <h4 md-line fxLayoutAlign="space-between center">
         {{comision.descripcion}}
-        <strong>Inscriptos: {{comision.total}}</strong>
+        <strong>{{comision.total}} inscriptos</strong>
         Mínimo: {{comision.cupo_minimo}} - Máximo: {{comision.cupo_maximo}}
       </h4>
       <md-progress-bar md-line [color]="getStatusColor(comision)" [value]="(comision.total / comision.cupo_maximo) * 100"></md-progress-bar>

@@ -33,12 +33,7 @@ export class EncuestaComponent implements OnInit {
   }
 
   getValue(materia, respuesta, comision) {
-    let rta = new Respuesta();
-    rta.materia = materia;
-    rta.respuesta = respuesta;
-    rta.comision = comision;
-
-    return rta;
+    return new Respuesta(respuesta, materia, comision);
   }
 
   comisionesSeleccionadas() {
@@ -65,16 +60,10 @@ export class EncuestaComponent implements OnInit {
 
   loadRespuestas(encuesta: Encuesta) {
     encuesta.cuatrimestre.ofertas.forEach((oferta) => {
-      let rta = new Respuesta();
-      rta.materia = oferta.materia;
-      rta.respuesta = 'NO_CURSA';
-      this.selecciones[oferta.materia.id] = rta;
+      this.selecciones[oferta.materia.id] = new Respuesta('NO_CURSA', oferta.materia);
     });
     encuesta.respuestas.forEach((respuesta) => {
-      let rta = new Respuesta();
-      rta.materia = respuesta.materia;
-      rta.comision = respuesta.comision;
-      rta.respuesta = respuesta.respuesta;
+      let rta = new Respuesta(respuesta.respuesta, respuesta.materia, respuesta.comision);
       this.selecciones[respuesta.materia.id] = rta;
     });
   }
