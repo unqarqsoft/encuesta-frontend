@@ -26,3 +26,10 @@
   <md-header-row *mdHeaderRowDef="columns"></md-header-row>
   <md-row *mdRowDef="let row; columns: columns;"></md-row>
 </md-table>
+
+<md-paginator #paginator
+              [length]="dataSource?.alumnos.length"
+              [pageIndex]="0"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 50]">
+</md-paginator>
