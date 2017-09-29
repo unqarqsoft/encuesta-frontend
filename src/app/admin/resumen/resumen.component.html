@@ -2,9 +2,17 @@
 
 <app-loading [show]="!materias">
   <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutFill style="margin-left: 25px;margin-right:10px">
-    <md-form-field floatPlaceholder="never">
-      <input mdInput #filter placeholder="Filtrar materias">
-    </md-form-field>
+    <div>
+      <md-form-field floatPlaceholder="never">
+        <input mdInput #filter placeholder="Filtrar materias">
+      </md-form-field>
+      <button md-icon-button #button [value]="false"
+          (click)="filterWarn(button); filter.value = ''"
+          mdTooltip="Mostrar materias con problemas de cupo"
+          mdTooltipPosition="right" >
+        <md-icon>error</md-icon>
+      </button>
+    </div>
     <div>
       <button md-button><md-icon>sort</md-icon> Ordenar por inscriptos</button>
       <button md-button><md-icon>sort_by_alpha</md-icon> Ordenar alfabéticamente</button>

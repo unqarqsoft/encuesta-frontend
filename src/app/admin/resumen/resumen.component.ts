@@ -26,7 +26,7 @@ export class ResumenComponent implements OnInit {
     this.estadisticaService.getComisiones()
       .then(materias => {
         this.dataSource = new DataSource(materias, this.paginator);
-        this.dataSource.itemValue = oferta => {return oferta.materia.nombre};
+        this.dataSource.itemValue = oferta => {return oferta.materia.nombre + '!' + oferta.status};
         this.materias = this.dataSource.connect();
       });
 
@@ -37,6 +37,15 @@ export class ResumenComponent implements OnInit {
           if (!this.dataSource) { return; }
           this.dataSource.filter = this.filter.nativeElement.value;
         });
+  }
+
+  filterWarn(button) {
+    button.value = !button.value;
+    if (button.value) {
+      this.dataSource.filter = '!WARN';
+    } else {
+      this.dataSource.filter = '';
+    }
   }
 
   getStatusColor(comision) {
