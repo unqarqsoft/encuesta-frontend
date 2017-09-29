@@ -1,6 +1,6 @@
 <app-header title="Materias"></app-header>
 
-<md-table [dataSource]="data">
+<md-table [dataSource]="dataSource">
   <ng-container mdColumnDef="id">
     <md-header-cell *mdHeaderCellDef>ID</md-header-cell>
     <md-cell *mdCellDef="let materia"> {{materia.id}} </md-cell>
@@ -21,7 +21,7 @@
 </md-table>
 
 <md-paginator #paginator
-              [length]="data?.materias.length"
+              [length]="dataSource?.data.length"
               [pageIndex]="0"
               [pageSize]="10"
               [pageSizeOptions]="[5, 10, 25, 50]">

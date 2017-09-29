@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { DataSource } from '@angular/cdk/collections';
 import { MdPaginator } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
+import { DataSource } from '../../utils/datasource';
 import { EncuestaService } from '../../services/encuesta.service';
 import { Encuesta, Respuesta } from '../../models';
 
@@ -17,7 +16,7 @@ import { Encuesta, Respuesta } from '../../models';
 })
 export class EncuestasComponent implements OnInit {
   encuestas: Observable<Encuesta[]>;
-  dataSource: EncuestaDataSource;
+  dataSource: DataSource<Encuesta>;
   @ViewChild(MdPaginator) paginator: MdPaginator;
   @ViewChild('filter') filter: ElementRef;
 
@@ -26,7 +25,8 @@ export class EncuestasComponent implements OnInit {
   ngOnInit() {
     this.encuestaService.getEncuestas()
       .then(encuestas => {
-        this.dataSource = new EncuestaDataSource(encuestas, this.paginator)
+        this.dataSource = new DataSource<Encuesta>(encuestas, this.paginator)
+        this.dataSource.itemValue = encuesta => {return encuesta.alumno.nombre + encuesta.alumno.apellido};
         this.encuestas = this.dataSource.connect();
       });
 
@@ -43,41 +43,4 @@ export class EncuestasComponent implements OnInit {
     return respuestas.filter(respuesta => respuesta.respuesta == 'COMISION');
   }
 
-}
-
-export class EncuestaDataSource extends DataSource<Encuesta> {
-  dataChange: BehaviorSubject<Encuesta[]> = new BehaviorSubject<Encuesta[]>([]);
-  _filterChange = new BehaviorSubject('');
-  get filter(): string { return this._filterChange.value; }
-  set filter(filter: string) { this._filterChange.next(filter); }
-
-  filteredData: any[] = [];
-  renderedData: any[] = [];
-
-  constructor(public data: Encuesta[], private paginator: MdPaginator) {
-    super();
-    this.dataChange.next(data);
-  }
-
-  connect(): Observable<Encuesta[]> {
-    const displayDataChanges = [
-      this.dataChange,
-      this._filterChange,
-      this.paginator.page
-    ];
-
-    return Observable.merge(...displayDataChanges).map(() => {
-      this.filteredData = this.data.slice().filter((item) => {
-        let searchStr = (item.alumno.nombre + item.alumno.apellido).toLowerCase();
-        return searchStr.indexOf(this.filter.toLowerCase()) != -1;
-      });
-
-      const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
-      this.renderedData = this.filteredData.splice(startIndex, this.paginator.pageSize);
-
-      return this.renderedData;
-    });
-  }
-
-  disconnect() {}
 }
