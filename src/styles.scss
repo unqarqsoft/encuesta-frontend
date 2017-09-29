@@ -82,10 +82,20 @@ body, html {
   margin-top: 10px !important;
 }
 
+.ml {
+  margin-left: 10px !important;
+}
+
 .mt-lg {
   margin-top: 25px !important;
 }
 
 .nucleo-card {
   background: rgba(0,0,0,.03);
+}
+
+.mat-icon-sm {
+  height: 19px !important;
+  width: 19px !important;
+  font-size: 19px;
 }

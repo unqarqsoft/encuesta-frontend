@@ -52,6 +52,9 @@ export class ResumenComponent implements OnInit {
     return 'accent';
   }
 
+  hasWarning(materia) {
+    return materia.comisiones.reduce((bool, comision) => bool || (comision.status != 'OK'), false)
+  }
 }
 
 export class MateriaDataSource extends DataSource<any> {

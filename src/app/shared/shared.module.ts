@@ -21,7 +21,8 @@ import {
   MdTableModule,
   MdProgressSpinnerModule,
   MatPaginatorModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatTooltipModule
 } from '@angular/material';
 
 @NgModule({
@@ -54,7 +55,8 @@ import {
     MdTableModule,
     NavbarComponent,
     FlexLayoutModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTooltipModule
   ]
 })
 

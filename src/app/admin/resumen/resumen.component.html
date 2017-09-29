@@ -15,9 +15,10 @@
     <md-expansion-panel-header>
     <md-panel-title>
       {{materia.materia.nombre}}
+      <md-icon class="mat-icon-sm ml" color="warn" mdTooltip="Comisiones con problema de cupo" mdTooltipPosition="right" *ngIf="hasWarning(materia)">error</md-icon>
     </md-panel-title>
     <md-panel-description fxFlex="1 1 50%">
-      Total inscriptos: {{materia.total}}
+      {{materia.total}} inscriptos
     </md-panel-description>
   </md-expansion-panel-header>
   <md-list>
