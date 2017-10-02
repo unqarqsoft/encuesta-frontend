@@ -25,7 +25,7 @@ export class EncuestasComponent implements OnInit {
   ngOnInit() {
     this.encuestaService.getEncuestas()
       .then(encuestas => {
-        this.dataSource = new DataSource<Encuesta>(encuestas, this.paginator)
+        this.dataSource = new DataSource<Encuesta>(encuestas, this.paginator);
         this.dataSource.itemValue = encuesta => {return encuesta.alumno.nombre + encuesta.alumno.apellido};
         this.encuestas = this.dataSource.connect();
       });

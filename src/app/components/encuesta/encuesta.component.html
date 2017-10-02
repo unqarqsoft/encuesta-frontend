@@ -29,6 +29,11 @@
                     <md-radio-button [value]="getValue(oferta.materia, 'NO_HORARIO')">Tengo problemas de horario</md-radio-button>
                     <md-radio-button *ngFor="let comision of oferta.comisiones" [value]="getValue(oferta.materia, 'COMISION', comision)">
                       {{comision.descripcion}}
+                      <md-icon class="mat-icon-xs" color="warn" *ngIf="comision.status == 'ALTA'"
+                          mdTooltip="Alta demanda"
+                          mdTooltipPosition="right">
+                        error
+                      </md-icon>
                     </md-radio-button>
                   </md-radio-group>
                 </md-expansion-panel>

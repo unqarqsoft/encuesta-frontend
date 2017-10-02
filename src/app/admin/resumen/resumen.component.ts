@@ -31,21 +31,17 @@ export class ResumenComponent implements OnInit {
       });
 
     Observable.fromEvent(this.filter.nativeElement, 'keyup')
-        .debounceTime(150)
-        .distinctUntilChanged()
-        .subscribe(() => {
-          if (!this.dataSource) { return; }
-          this.dataSource.filter = this.filter.nativeElement.value;
-        });
+      .debounceTime(150)
+      .distinctUntilChanged()
+      .subscribe(() => {
+        if (!this.dataSource) { return; }
+        this.dataSource.filter = this.filter.nativeElement.value;
+      });
   }
 
   filterWarn(button) {
     button.value = !button.value;
-    if (button.value) {
-      this.dataSource.filter = '!WARN';
-    } else {
-      this.dataSource.filter = '';
-    }
+    this.dataSource.filter = button.value ? '!WARN' : '';
   }
 
   getStatusColor(comision) {
@@ -59,6 +55,6 @@ export class ResumenComponent implements OnInit {
   }
 
   hasWarning(materia) {
-    return materia.comisiones.reduce((bool, comision) => bool || (comision.status != 'OK'), false)
+    return materia.comisiones.reduce((bool, comision) => bool || (comision.status != 'OK'), false);
   }
 }
