@@ -27,10 +27,7 @@ export class EncuestaService {
   putEncuestaRespuestas(encuesta) {
     return this.http.put(this.url + "/" + encuesta.id + "/respuestas", {respuestas: encuesta.respuestas})
       .toPromise()
-      .then(response => {
-        console.log(response);
-        response.json() as Encuesta
-      })
+      .then(response => response.json() as Encuesta)
       .catch(this.handleError);
   }
 

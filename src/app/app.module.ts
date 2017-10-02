@@ -14,6 +14,7 @@ import { AdminModule } from './admin/admin.module';
 
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { Page404Component } from './components/page-404/page-404.component';
 
 import { CuatrimestreService } from './services/cuatrimestre.service';
 import { EncuestaService } from './services/encuesta.service';
@@ -26,6 +27,7 @@ import { EstadisticaService } from './services/estadistica.service';
     AppComponent,
     HomepageComponent,
     EncuestaComponent,
+    Page404Component,
     ScrollSpyAffixDirective
   ],
   imports: [

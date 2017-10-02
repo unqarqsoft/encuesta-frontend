@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 
 import 'rxjs/add/operator/switchMap';
@@ -21,6 +21,7 @@ export class EncuestaComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private encuestaService: EncuestaService,
     private alumnoService: AlumnoService,
     public notification: MdSnackBar
@@ -29,7 +30,13 @@ export class EncuestaComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .switchMap((params: ParamMap) => this.encuestaService.getEncuesta(params.get('token')))
-      .subscribe(encuesta => this.loadEncuesta(encuesta));
+      .subscribe(encuesta => {
+        if (!encuesta) {
+          this.router.navigate(['/404']);
+        } else {
+          this.loadEncuesta(encuesta);
+        }
+      });
   }
 
   getValue(materia, respuesta, comision) {
