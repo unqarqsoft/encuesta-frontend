@@ -1,11 +1,30 @@
 <app-header title="Admin dashboard"></app-header>
 
-<div fxLayout="row" fxLayoutAlign="center center" class="mt">
+<div fxLayout="column" fxLayoutGap="10px" style="margin: 10px">
   <md-card>
-    <md-card-title>TPI cuatri 2017</md-card-title>
-    <md-card-content>
-      <h1>50%</h1>
-      <md-progress-bar color="primary" value="50"></md-progress-bar>
-    </md-card-content>
+    <md-card-title>Porcentaje de encuestas completadas</md-card-title>
+    <md-list>
+      <md-list-item *ngFor="let cuatrimestre of encuestasCuatrimestre">
+        <md-icon md-list-icon>chevron_right</md-icon>
+        <h4 md-line fxLayoutAlign="space-between center">
+          {{cuatrimestre.carrera.nombre}} - {{cuatrimestre.descripcion}}
+          <strong>% {{cuatrimestre.porcentaje}}</strong>
+        </h4>
+        <md-progress-bar md-line color="primary" [value]="cuatrimestre.porcentaje"></md-progress-bar>
+      </md-list-item>
+    </md-list>
+  </md-card>
+
+  <md-card>
+    <md-card-title>Materias con problemas de horario</md-card-title>
+    <md-list style="max-height: 200px; overflow:auto">
+      <md-list-item *ngFor="let materia of materiasHorario">
+        <md-icon md-list-icon>chevron_right</md-icon>
+        <h4 md-line fxLayoutAlign="space-between center">
+          {{materia.materia.nombre}}
+          <div>{{materia.total}} alumnos</div>
+        </h4>
+      </md-list-item>
+    </md-list>
   </md-card>
 </div>

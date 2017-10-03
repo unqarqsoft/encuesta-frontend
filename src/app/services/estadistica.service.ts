@@ -16,6 +16,20 @@ export class EstadisticaService {
       .catch(this.handleError);
   }
 
+  getHorario() {
+    return this.http.get(this.url + "/horario")
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getEncuestasCuatrimestre() {
+    return this.http.get(this.url + "/encuestas")
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
