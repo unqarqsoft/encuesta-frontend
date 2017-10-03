@@ -10,7 +10,7 @@
           {{cuatrimestre.carrera.nombre}} - {{cuatrimestre.descripcion}}
           <strong>% {{cuatrimestre.porcentaje}}</strong>
         </h4>
-        <md-progress-bar md-line color="primary" [value]="cuatrimestre.porcentaje"></md-progress-bar>
+        <md-progress-bar md-line [color]="getColor(cuatrimestre)" [value]="cuatrimestre.porcentaje"></md-progress-bar>
       </md-list-item>
     </md-list>
   </md-card>

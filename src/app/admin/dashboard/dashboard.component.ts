@@ -20,4 +20,13 @@ export class DashboardComponent implements OnInit {
       .then(response => this.encuestasCuatrimestre = response);
   }
 
+  getColor(cuatrimestre) {
+    if (cuatrimestre.porcentaje < 40) {
+      return 'warn';
+    }
+    if (cuatrimestre.porcentaje > 70) {
+      return 'accent';
+    }
+    return 'primary';
+  }
 }
