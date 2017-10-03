@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 
@@ -14,7 +14,7 @@ import { AlumnoService } from '../../services/alumno.service';
   templateUrl: './encuesta.component.html',
   styleUrls: ['./encuesta.component.css']
 })
-export class EncuestaComponent implements OnInit {
+export class EncuestaComponent implements OnInit, OnDestroy {
   _encuesta: Encuesta;
   selecciones = {};
   oferta = {};
@@ -37,6 +37,10 @@ export class EncuestaComponent implements OnInit {
           this.loadEncuesta(encuesta);
         }
       });
+  }
+
+  ngOnDestroy() {
+    this.alumnoService.setAlumno(null);
   }
 
   getValue(materia, respuesta, comision) {
