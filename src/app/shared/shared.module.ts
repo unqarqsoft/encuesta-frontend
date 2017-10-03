@@ -6,32 +6,13 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoadingComponent } from './loading/loading.component';
 import { HeaderComponent } from './header/header.component';
-
-import {
-  MdCardModule,
-  MdToolbarModule,
-  MdSidenavModule,
-  MdButtonModule,
-  MdIconModule,
-  MdInputModule,
-  MdExpansionModule,
-  MdRadioModule,
-  MdListModule,
-  MdSnackBarModule,
-  MdTableModule,
-  MdProgressSpinnerModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatTooltipModule
-} from '@angular/material';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   imports: [
-    MdProgressSpinnerModule,
+    MaterialModule,
     CommonModule,
     FlexLayoutModule,
-    MdToolbarModule,
-    MdButtonModule,
     RouterModule
   ],
   declarations: [
@@ -40,23 +21,11 @@ import {
     HeaderComponent
   ],
   exports: [
-    MdCardModule,
-    MdSidenavModule,
-    MdButtonModule,
-    MdIconModule,
-    MdInputModule,
-    MdExpansionModule,
-    MdRadioModule,
-    MdListModule,
-    MdSnackBarModule,
-    MatProgressBarModule,
+    MaterialModule,
     LoadingComponent,
     HeaderComponent,
-    MdTableModule,
     NavbarComponent,
-    FlexLayoutModule,
-    MatPaginatorModule,
-    MatTooltipModule
+    FlexLayoutModule
   ]
 })
 
