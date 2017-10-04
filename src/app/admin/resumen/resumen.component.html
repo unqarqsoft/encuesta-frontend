@@ -13,9 +13,9 @@
         <md-icon>error</md-icon>
       </button>
     </div>
-    <div>
-      <button md-button><md-icon>sort</md-icon> Ordenar por inscriptos</button>
-      <button md-button><md-icon>sort_by_alpha</md-icon> Ordenar alfabéticamente</button>
+    <div fxLayout="row" fxLayoutGap="5px" mdSort>
+      <button md-button><div md-sort-header="count-sort"><md-icon>sort</md-icon> Ordenar por inscriptos</div></button>
+      <button md-button><div md-sort-header="alpha-sort"><md-icon>sort_by_alpha</md-icon> Ordenar alfabéticamente</div></button>
     </div>
   </div>
 

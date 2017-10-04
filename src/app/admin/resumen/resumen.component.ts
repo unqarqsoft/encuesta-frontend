@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { MdPaginator } from '@angular/material';
+import { MdPaginator, MdSort } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
@@ -18,6 +18,7 @@ export class ResumenComponent implements OnInit {
   dataSource: DataSource<any>;
 
   @ViewChild(MdPaginator) paginator: MdPaginator;
+  @ViewChild(MdSort) sort: MdSort;
   @ViewChild('filter') filter: ElementRef;
 
   constructor(private estadisticaService: EstadisticaService) { }
@@ -25,8 +26,13 @@ export class ResumenComponent implements OnInit {
   ngOnInit() {
     this.estadisticaService.getComisiones()
       .then(materias => {
-        this.dataSource = new DataSource(materias, this.paginator);
-        this.dataSource.itemValue = oferta => {return oferta.materia.nombre + '!' + oferta.status};
+        this.dataSource = new DataSource(materias, this.paginator, this.sort);
+        this.dataSource.itemValue = (oferta, sort) => {
+          if (sort == 'count-sort') {
+            return oferta.total;
+          }
+          return oferta.materia.nombre + '!' + oferta.status;
+        };
         this.materias = this.dataSource.connect();
       });
 

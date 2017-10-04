@@ -15,7 +15,8 @@ import {
   MdProgressSpinnerModule,
   MatPaginatorModule,
   MatProgressBarModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatSortModule
 } from '@angular/material';
 
 @NgModule({
@@ -35,7 +36,8 @@ import {
     MatProgressBarModule,
     MdTableModule,
     MatPaginatorModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSortModule
   ]
 })
 
