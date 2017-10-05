@@ -36,7 +36,7 @@ export class HomepageComponent implements OnInit {
         this.notification.open("Encuesta enviada por email", "OK", {duration: 4000});
       }).catch(() => {
         this.notification.open("Ha ocurrido un error, intente más tarde", "ERROR",
-          {duration: 40000, extraClasses: ['error']});
+          {duration: 4000, extraClasses: ['error']});
       }).then(() => {
         form.resetForm();
         this.loadingBarService.show = false;
