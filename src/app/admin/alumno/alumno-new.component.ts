@@ -22,6 +22,6 @@ export class AlumnoNewComponent implements OnInit {
 
   onSubmit() {
     this.alumnoService.postAlumno(this.alumno)
-      .then(response => this.router.navigate(['./alumnos']));
+      .then(response => this.router.navigate(['./admin/alumnos']));
   }
 }
