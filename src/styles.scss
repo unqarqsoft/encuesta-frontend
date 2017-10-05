@@ -27,6 +27,7 @@ $app-theme: mat-light-theme(mat-palette($mat-indigo), mat-palette($mat-green));
 
 $primary: map-get($app-theme, primary);
 $accent: map-get($app-theme, accent);
+$warn: map-get($app-theme, warn);
 
 body {
   margin: 0;
@@ -112,4 +113,8 @@ body, html {
 
 button .mat-sort-header-arrow {
   margin-top: 12px;
+}
+
+.mat-snack-bar-container.error .mat-simple-snackbar-action {
+  color: mat-color($warn);
 }

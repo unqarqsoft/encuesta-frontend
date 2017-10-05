@@ -3,6 +3,7 @@ import { MdSnackBar } from '@angular/material';
 
 import { CuatrimestreService } from '../../services/cuatrimestre.service';
 import { EncuestaService } from '../../services/encuesta.service';
+import { LoadingBarService } from '../../shared/loading-bar/loading-bar.service';
 import { Cuatrimestre } from '../../models';
 
 @Component({
@@ -17,6 +18,7 @@ export class HomepageComponent implements OnInit {
   constructor(
     private cuatrimestreService: CuatrimestreService,
     private encuestaService: EncuestaService,
+    private loadingBarService: LoadingBarService,
     public notification: MdSnackBar
   ) {}
 
@@ -27,12 +29,18 @@ export class HomepageComponent implements OnInit {
   }
 
   onSubmit(form, cuatrimestre) {
-    this.encuestaService.generarEncuesta(cuatrimestre, form.value.email).then(
-      response => {
-        console.log(response)
+    this.loadingBarService.show = true;
+    this.encuestaService.generarEncuesta(cuatrimestre, form.value.email)
+      .then(response => {
+        console.log(response);
         this.notification.open("Encuesta enviada por email", "OK", {duration: 4000});
-      }
-    );
+      }).catch(() => {
+        this.notification.open("Ha ocurrido un error, intente más tarde", "ERROR",
+          {duration: 40000, extraClasses: ['error']});
+      }).then(() => {
+        form.resetForm();
+        this.loadingBarService.show = false;
+      });
   }
 
   ngOnInit() {
