@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { Encuesta, Comision, Respuesta } from '../../models';
 import { EncuestaService } from '../../services/encuesta.service';
 import { AlumnoService } from '../../services/alumno.service';
+import { LoadingBarService } from '../../shared/loading-bar/loading-bar.service';
 
 @Component({
   selector: 'app-encuesta',
@@ -24,6 +25,7 @@ export class EncuestaComponent implements OnInit, OnDestroy {
     private router: Router,
     private encuestaService: EncuestaService,
     private alumnoService: AlumnoService,
+    private loadingBarService: LoadingBarService,
     public notification: MdSnackBar
   ) {}
 
@@ -102,12 +104,18 @@ export class EncuestaComponent implements OnInit, OnDestroy {
 
   saveEncuesta(button) {
     button.disabled = true;
+    this.loadingBarService.show = true;
     this._encuesta.respuestas = Object.values(this.selecciones) as Respuesta[];
-    this.encuestaService.putEncuestaRespuestas(this._encuesta).then(
-      response => {
-        this.notification.open("Encuesta guardada", "OK", {duration: 4000});
+    console.log(this._encuesta);
+    this.encuestaService.putEncuestaRespuestas(this._encuesta)
+      .then(() =>
+        this.notification.open("Encuesta guardada", "OK", {duration: 4000}))
+      .catch(() =>
+        this.notification.open("Ha ocurrido un error, intente más tarde", "ERROR",
+          {duration: 4000, extraClasses: ['error']}))
+      .then(() => {
+        this.loadingBarService.show = false;
         button.disabled = false;
-      }
-    );
+      });
   }
 }
