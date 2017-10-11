@@ -1,0 +1,19 @@
+<div fxLayout="row" fxLayoutAlign="center" fxFlexFill>
+  <div fxFlex="30" class="mt-lg">
+    <md-card>
+      <md-card-title>Iniciar sesión</md-card-title>
+      <md-card-content>
+        <form (ngSubmit)="onSubmit()" class="mt">
+          <md-form-field fxFill>
+            <input mdInput placeholder="Nombre de usuario" required [(ngModel)]="username" name="username">
+          </md-form-field>
+          <md-form-field fxFill>
+            <input mdInput placeholder="Contraseña" required [(ngModel)]="password" name="password" type="password">
+          </md-form-field>
+
+          <button type="submit" md-raised-button color="accent" fxFill>Ingresar</button>
+        </form>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

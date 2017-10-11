@@ -16,11 +16,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { Page404Component } from './components/page-404/page-404.component';
 
-import { CuatrimestreService } from './services/cuatrimestre.service';
-import { EncuestaService } from './services/encuesta.service';
-import { AlumnoService } from './services/alumno.service';
-import { MateriaService } from './services/materia.service';
-import { EstadisticaService } from './services/estadistica.service';
+import { CuatrimestreService, EncuestaService, AlumnoService, MateriaService, EstadisticaService, UserService } from './services';
 
 @NgModule({
   declarations: [
@@ -45,7 +41,8 @@ import { EstadisticaService } from './services/estadistica.service';
     EncuestaService,
     AlumnoService,
     MateriaService,
-    EstadisticaService
+    EstadisticaService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
