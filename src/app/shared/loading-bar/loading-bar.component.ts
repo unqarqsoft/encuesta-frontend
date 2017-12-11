@@ -9,7 +9,7 @@ import { LoadingBarService } from './loading-bar.service';
 })
 export class LoadingBarComponent implements OnInit {
 
-  constructor(private loadingBarService: LoadingBarService) { }
+  constructor(public loadingBarService: LoadingBarService) { }
 
   ngOnInit() {
   }
