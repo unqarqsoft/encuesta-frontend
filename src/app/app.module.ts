@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScrollSpyModule } from 'ngx-scrollspy';
-import { ScrollSpyAffixDirective } from 'ngx-scrollspy/dist/plugin/affix'
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
@@ -27,8 +26,7 @@ import { EstadisticaService } from './services/estadistica.service';
     AppComponent,
     HomepageComponent,
     EncuestaComponent,
-    Page404Component,
-    ScrollSpyAffixDirective
+    Page404Component
   ],
   imports: [
     BrowserModule,
