@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ScrollSpyModule } from 'ngx-scrollspy';
+import { ScrollSpyModule, ScrollSpyAffixModule } from 'ngx-scrollspy';
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
@@ -34,6 +34,7 @@ import { EstadisticaService } from './services/estadistica.service';
     HttpModule,
     FormsModule,
     ScrollSpyModule.forRoot(),
+    ScrollSpyAffixModule,
     RouterModule.forRoot(routes),
     SharedModule,
     AdminModule
