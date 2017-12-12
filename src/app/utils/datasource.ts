@@ -1,5 +1,5 @@
 import { DataSource as NGDataSource} from '@angular/cdk/collections';
-import { MdPaginator, MdSort } from '@angular/material';
+import { MatPaginator, MatSort } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/startWith';
@@ -16,7 +16,7 @@ export class DataSource<T> extends NGDataSource<T> {
   get filter(): string { return this.filterChange.value; }
   set filter(filter: string) { this.filterChange.next(filter); }
 
-  constructor(public data: T[], private paginator: MdPaginator, private sort?: MdSort) {
+  constructor(public data: T[], private paginator: MatPaginator, private sort?: MatSort) {
     super();
     this.filterChange.subscribe(() => this.paginator.pageIndex = 0);
     this.dataChange.next(data);
@@ -32,7 +32,7 @@ export class DataSource<T> extends NGDataSource<T> {
     ];
 
     if (typeof this.sort !== 'undefined') {
-      displayDataChanges.push(this.sort._matSortChange);
+      displayDataChanges.push(this.sort.sortChange);
     }
 
     return Observable.merge(...displayDataChanges).map(() => {

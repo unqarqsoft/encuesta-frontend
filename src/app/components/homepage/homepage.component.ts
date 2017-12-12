@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 import { CuatrimestreService } from '../../services/cuatrimestre.service';
 import { EncuestaService } from '../../services/encuesta.service';
@@ -19,7 +19,7 @@ export class HomepageComponent implements OnInit {
     private cuatrimestreService: CuatrimestreService,
     private encuestaService: EncuestaService,
     private loadingBarService: LoadingBarService,
-    public notification: MdSnackBar
+    public notification: MatSnackBar
   ) {}
 
   getCuatrimestres() {

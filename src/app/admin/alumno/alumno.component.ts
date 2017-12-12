@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { DataSource } from '../../utils/datasource';
-import { MdPaginator } from '@angular/material';
+import { MatPaginator } from '@angular/material';
 import { AlumnoService } from '../../services/alumno.service';
 import { Alumno } from '../../models';
 
@@ -14,7 +14,7 @@ import { Alumno } from '../../models';
 export class AlumnoComponent implements OnInit {
   columns = ['id', 'nombre', 'apellido', 'email'];
   dataSource: DataSource<Alumno>;
-  @ViewChild(MdPaginator) paginator: MdPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private alumnoService: AlumnoService) { }
 

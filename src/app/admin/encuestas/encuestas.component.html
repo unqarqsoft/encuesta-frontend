@@ -2,37 +2,37 @@
 
 <app-loading [show]="!encuestas">
   <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutFill style="margin-left: 25px;margin-right:10px">
-    <md-form-field floatPlaceholder="never">
-      <input mdInput #filter placeholder="Filtrar alumnos">
-    </md-form-field>
+    <mat-form-field floatPlaceholder="never">
+      <input matInput #filter placeholder="Filtrar alumnos">
+    </mat-form-field>
   </div>
 
   <ng-container *ngFor="let encuesta of (encuestas | async)">
-    <md-expansion-panel>
-      <md-expansion-panel-header>
-        <md-panel-title>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
           {{encuesta.alumno.nombre}} {{encuesta.alumno.apellido}}
-        </md-panel-title>
-        <md-panel-description fxFlex="1 1 50%"></md-panel-description>
-      </md-expansion-panel-header>
+        </mat-panel-title>
+        <mat-panel-description fxFlex="1 1 50%"></mat-panel-description>
+      </mat-expansion-panel-header>
 
-      <md-list>
-        <md-list-item *ngFor="let respuesta of comisiones(encuesta.respuestas)">
-          <md-icon md-list-icon>chevron_right</md-icon>
-          <h4 md-line>
+      <mat-list>
+        <mat-list-item *ngFor="let respuesta of comisiones(encuesta.respuestas)">
+          <mat-icon mat-list-icon>chevron_right</mat-icon>
+          <h4 matLine>
             {{respuesta.materia.nombre}}
           </h4>
-          <h4 md-line>
+          <h4 matLine>
             {{respuesta.comision.descripcion}}
           </h4>
-        </md-list-item>
-      </md-list>
-    </md-expansion-panel>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
   </ng-container>
-  <md-paginator #paginator
+  <mat-paginator #paginator
                 [length]="dataSource?.data.length"
                 [pageIndex]="0"
                 [pageSize]="12"
                 [pageSizeOptions]="[5, 12, 15, 25, 50]">
-  </md-paginator>
+  </mat-paginator>
 </app-loading>

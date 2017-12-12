@@ -1,35 +1,35 @@
 <app-header title="Alumnos">
-  <button md-raised-button color="accent" routerLink="./new">NUEVO</button>
+  <button mat-raised-button color="accent" routerLink="./new">NUEVO</button>
 </app-header>
 
-<md-table [dataSource]="dataSource">
-  <ng-container mdColumnDef="id">
-    <md-header-cell *mdHeaderCellDef>ID</md-header-cell>
-    <md-cell *mdCellDef="let alumno"> {{alumno.id}} </md-cell>
+<mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+    <mat-cell *matCellDef="let alumno"> {{alumno.id}} </mat-cell>
   </ng-container>
 
-  <ng-container mdColumnDef="nombre">
-    <md-header-cell *mdHeaderCellDef>Nombre</md-header-cell>
-    <md-cell *mdCellDef="let alumno"> {{alumno.nombre}} </md-cell>
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+    <mat-cell *matCellDef="let alumno"> {{alumno.nombre}} </mat-cell>
   </ng-container>
 
-  <ng-container mdColumnDef="apellido">
-    <md-header-cell *mdHeaderCellDef>Apellido</md-header-cell>
-    <md-cell *mdCellDef="let alumno"> {{alumno.apellido}} </md-cell>
+  <ng-container matColumnDef="apellido">
+    <mat-header-cell *matHeaderCellDef>Apellido</mat-header-cell>
+    <mat-cell *matCellDef="let alumno"> {{alumno.apellido}} </mat-cell>
   </ng-container>
 
-  <ng-container mdColumnDef="email">
-    <md-header-cell *mdHeaderCellDef>Email</md-header-cell>
-    <md-cell *mdCellDef="let alumno"> {{alumno.email}} </md-cell>
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+    <mat-cell *matCellDef="let alumno"> {{alumno.email}} </mat-cell>
   </ng-container>
 
-  <md-header-row *mdHeaderRowDef="columns"></md-header-row>
-  <md-row *mdRowDef="let row; columns: columns;"></md-row>
-</md-table>
+  <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+</mat-table>
 
-<md-paginator #paginator
+<mat-paginator #paginator
               [length]="dataSource?.data.length"
               [pageIndex]="0"
               [pageSize]="10"
               [pageSizeOptions]="[5, 10, 25, 50]">
-</md-paginator>
+</mat-paginator>

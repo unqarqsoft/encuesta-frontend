@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
@@ -26,7 +26,7 @@ export class EncuestaComponent implements OnInit, OnDestroy {
     private encuestaService: EncuestaService,
     private alumnoService: AlumnoService,
     private loadingBarService: LoadingBarService,
-    public notification: MdSnackBar
+    public notification: MatSnackBar
   ) {}
 
   ngOnInit() {

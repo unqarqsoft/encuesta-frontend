@@ -1,9 +1,9 @@
-<md-toolbar color="primary" fxLayoutWrap>
-  <button md-button routerLink="/">ENCUESTAS</button>
-  <button md-button routerLink="/admin">ADMIN</button>
+<mat-toolbar color="primary" fxLayoutWrap>
+  <button mat-button routerLink="/">ENCUESTAS</button>
+  <button mat-button routerLink="/admin">ADMIN</button>
   <div fxFlex="1 1 auto"></div>
   <ng-container *ngIf="alumno">
     <img [src]="gravatar()">
-    <button md-button>{{alumno.nombre}} {{alumno.apellido}}</button>
+    <button mat-button>{{alumno.nombre}} {{alumno.apellido}}</button>
   </ng-container>
-</md-toolbar>
+</mat-toolbar>

@@ -8,64 +8,64 @@
     <div fxLayout="row" fxLayoutGap="10px">
 
       <div fxFlex="75">
-        <md-card class="nucleo-card">
+        <mat-card class="nucleo-card">
           <ng-template ngFor let-nucleo let-first="first" [ngForOf]="nucleos()">
-            <md-card-title [class.mt-lg]="!first">Materias del {{nucleo}}</md-card-title>
-            <md-card-content>
-              <md-accordion>
-                <md-expansion-panel #panel *ngFor="let oferta of oferta[nucleo]" class="materia-panel">
-                  <md-expansion-panel-header>
-                    <md-panel-title>
+            <mat-card-title [class.mt-lg]="!first">Materias del {{nucleo}}</mat-card-title>
+            <mat-card-content>
+              <mat-accordion>
+                <mat-expansion-panel #panel *ngFor="let oferta of oferta[nucleo]" class="materia-panel">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
                       {{oferta.materia.nombre}}
-                    </md-panel-title>
-                    <md-panel-description fxFlex="1 1 50%">
+                    </mat-panel-title>
+                    <mat-panel-description fxFlex="1 1 50%">
                       <span [ngClass]="getPanelClass(oferta.materia.id)">{{selecciones[oferta.materia.id]?.descripcion()}}</span>
-                    </md-panel-description>
-                  </md-expansion-panel-header>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
 
-                  <md-radio-group fxLayout="column" fxLayoutGap="10px" (change)="selectOption($event); panel.toggle()">
-                    <md-radio-button [value]="getValue(oferta.materia, 'APROBADA')">Ya aprobé</md-radio-button>
-                    <md-radio-button [value]="getValue(oferta.materia, 'NO_CURSA')">No voy a cursar</md-radio-button>
-                    <md-radio-button [value]="getValue(oferta.materia, 'NO_HORARIO')">Tengo problemas de horario</md-radio-button>
-                    <md-radio-button *ngFor="let comision of oferta.comisiones" [value]="getValue(oferta.materia, 'COMISION', comision)">
+                  <mat-radio-group fxLayout="column" fxLayoutGap="10px" (change)="selectOption($event); panel.toggle()">
+                    <mat-radio-button [value]="getValue(oferta.materia, 'APROBADA')">Ya aprobé</mat-radio-button>
+                    <mat-radio-button [value]="getValue(oferta.materia, 'NO_CURSA')">No voy a cursar</mat-radio-button>
+                    <mat-radio-button [value]="getValue(oferta.materia, 'NO_HORARIO')">Tengo problemas de horario</mat-radio-button>
+                    <mat-radio-button *ngFor="let comision of oferta.comisiones" [value]="getValue(oferta.materia, 'COMISION', comision)">
                       {{comision.descripcion}}
-                      <md-icon class="mat-icon-xs" color="warn" *ngIf="comision.status == 'ALTA'"
-                          mdTooltip="Alta demanda"
-                          mdTooltipPosition="right">
+                      <mat-icon class="mat-icon-xs" color="warn" *ngIf="comision.status == 'ALTA'"
+                          matTooltip="Alta demanda"
+                          matTooltipPosition="right">
                         error
-                      </md-icon>
-                    </md-radio-button>
-                  </md-radio-group>
-                </md-expansion-panel>
-              </md-accordion>
-            </md-card-content>
+                      </mat-icon>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </mat-card-content>
           </ng-template>
-        </md-card>
+        </mat-card>
       </div>
 
       <div fxFlex="25" scrollSpy>
-        <md-card>
-          <md-card-title>Resumen</md-card-title>
-          <md-card-content>
-            <md-list>
-              <md-list-item *ngIf="!comisionesSeleccionadas().length">
+        <mat-card>
+          <mat-card-title>Resumen</mat-card-title>
+          <mat-card-content>
+            <mat-list>
+              <mat-list-item *ngIf="!comisionesSeleccionadas().length">
                 No hay comisiones seleccionadas
-              </md-list-item>
-              <md-list-item *ngFor="let respuesta of comisionesSeleccionadas()">
-                <h4 md-line>{{respuesta.materia.nombre}}</h4>
-                <p md-line>{{respuesta.comision.descripcion}}</p>
-                <md-icon color="warn" *ngIf="respuesta.comision.status == 'ALTA'"
-                    mdTooltip="Alta demanda"
-                    mdTooltipPosition="left">
+              </mat-list-item>
+              <mat-list-item *ngFor="let respuesta of comisionesSeleccionadas()">
+                <h4 matLine>{{respuesta.materia.nombre}}</h4>
+                <p matLine>{{respuesta.comision.descripcion}}</p>
+                <mat-icon color="warn" *ngIf="respuesta.comision.status == 'ALTA'"
+                    matTooltip="Alta demanda"
+                    matTooltipPosition="left">
                   error
-                </md-icon>
-              </md-list-item>
-            </md-list>
-          </md-card-content>
-          <md-card-actions fxLayoutAlign="center">
-            <button fxFlexFill md-raised-button color="accent" #btnSave (click)="saveEncuesta(btnSave)">Guardar</button>
-          </md-card-actions>
-        </md-card>
+                </mat-icon>
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+          <mat-card-actions fxLayoutAlign="center">
+            <button fxFlexFill mat-raised-button color="accent" #btnSave (click)="saveEncuesta(btnSave)">Guardar</button>
+          </mat-card-actions>
+        </mat-card>
       </div>
 
     </div>

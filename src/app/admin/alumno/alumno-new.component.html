@@ -1,19 +1,19 @@
 <app-header title="Alumno nuevo">
-  <button md-raised-button color="warn" routerLink="..">CANCELAR</button>
+  <button mat-raised-button color="warn" routerLink="..">CANCELAR</button>
 </app-header>
 
 <div fxLayout="row" fxLayoutAlign="center center">
   <form (ngSubmit)="onSubmit()" #alumnoForm="ngForm" fxLayout="column" class="mt">
-    <md-form-field>
-      <input mdInput placeholder="Nombre" required [(ngModel)]="alumno.nombre" name="nombre">
-    </md-form-field>
-    <md-form-field>
-      <input mdInput placeholder="Apellido" required [(ngModel)]="alumno.apellido" name="apellido">
-    </md-form-field>
-    <md-form-field>
-      <input mdInput placeholder="Email" required [(ngModel)]="alumno.email" name="email">
-    </md-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Nombre" required [(ngModel)]="alumno.nombre" name="nombre">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Apellido" required [(ngModel)]="alumno.apellido" name="apellido">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email" required [(ngModel)]="alumno.email" name="email">
+    </mat-form-field>
 
-    <button type="submit" md-raised-button color="accent" [disabled]="!alumnoForm.form.valid">Guardar</button>
+    <button type="submit" mat-raised-button color="accent" [disabled]="!alumnoForm.form.valid">Guardar</button>
   </form>
 </div>

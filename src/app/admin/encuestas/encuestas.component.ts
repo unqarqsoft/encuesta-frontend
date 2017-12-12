@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { MdPaginator } from '@angular/material';
+import { MatPaginator } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
@@ -17,7 +17,7 @@ import { Encuesta, Respuesta } from '../../models';
 export class EncuestasComponent implements OnInit {
   encuestas: Observable<Encuesta[]>;
   dataSource: DataSource<Encuesta>;
-  @ViewChild(MdPaginator) paginator: MdPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild('filter') filter: ElementRef;
 
   constructor(private encuestaService: EncuestaService) { }

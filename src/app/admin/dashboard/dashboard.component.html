@@ -1,30 +1,30 @@
 <app-header title="Admin dashboard"></app-header>
 
 <div fxLayout="column" fxLayoutGap="10px" style="margin: 10px">
-  <md-card>
-    <md-card-title>Porcentaje de encuestas completadas</md-card-title>
-    <md-list>
-      <md-list-item *ngFor="let cuatrimestre of encuestasCuatrimestre">
-        <md-icon md-list-icon>chevron_right</md-icon>
-        <h4 md-line fxLayoutAlign="space-between center">
+  <mat-card>
+    <mat-card-title>Porcentaje de encuestas completadas</mat-card-title>
+    <mat-list>
+      <mat-list-item *ngFor="let cuatrimestre of encuestasCuatrimestre">
+        <mat-icon mat-list-icon>chevron_right</mat-icon>
+        <h4 matLine fxLayoutAlign="space-between center">
           {{cuatrimestre.carrera.nombre}} - {{cuatrimestre.descripcion}}
           <strong>% {{cuatrimestre.porcentaje}}</strong>
         </h4>
-        <md-progress-bar md-line [color]="getColor(cuatrimestre)" [value]="cuatrimestre.porcentaje"></md-progress-bar>
-      </md-list-item>
-    </md-list>
-  </md-card>
+        <mat-progress-bar matLine [color]="getColor(cuatrimestre)" [value]="cuatrimestre.porcentaje"></mat-progress-bar>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
 
-  <md-card>
-    <md-card-title>Materias con problemas de horario</md-card-title>
-    <md-list style="max-height: 200px; overflow:auto">
-      <md-list-item *ngFor="let materia of materiasHorario">
-        <md-icon md-list-icon>chevron_right</md-icon>
-        <h4 md-line fxLayoutAlign="space-between center">
+  <mat-card>
+    <mat-card-title>Materias con problemas de horario</mat-card-title>
+    <mat-list style="max-height: 200px; overflow:auto">
+      <mat-list-item *ngFor="let materia of materiasHorario">
+        <mat-icon mat-list-icon>chevron_right</mat-icon>
+        <h4 matLine fxLayoutAlign="space-between center">
           {{materia.materia.nombre}}
           <div>{{materia.total}} alumnos</div>
         </h4>
-      </md-list-item>
-    </md-list>
-  </md-card>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
 </div>
